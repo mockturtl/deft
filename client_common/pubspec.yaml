@@ -1,6 +1,6 @@
 name: deft_client_common
 description: Shared utilities and middleware for gRPC clients.
-version: 1.0.0
+version: 0.1.0
 # homepage: https://www.example.com
 
 environment:
