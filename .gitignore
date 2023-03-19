@@ -1,0 +1,17 @@
+# Secrets: GCP service account keys, etc.
+.secret/
+*.env
+
+# Files and directories created by pub.
+pubspec.lock
+.dart_tool/
+.packages
+doc/
+
+# Conventional directory for build output.
+build/
+
+# Build artifacts
+bin/*.exe
+
+.idea/
