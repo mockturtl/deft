@@ -2,9 +2,9 @@
 import 'dart:convert';
 import 'dart:io';
 
-import '../api.g.dart' show LogSeverity;
 import 'gcp_log_service_adapter.dart';
 import 'log_adapter_base.dart';
+import 'log_severity.dart';
 import 'print_log_adapter.dart';
 
 /// Writes structured logs (JSON) to [stdout] or [stderr], depending on [LogSeverity].

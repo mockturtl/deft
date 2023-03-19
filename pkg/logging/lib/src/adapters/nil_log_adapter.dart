@@ -1,5 +1,5 @@
-import '../api.g.dart' show LogSeverity;
 import 'log_adapter_base.dart';
+import 'log_severity.dart';
 
 /// A [LogAdapterBase] where [write] is a no-op.
 /// Useful for testing.

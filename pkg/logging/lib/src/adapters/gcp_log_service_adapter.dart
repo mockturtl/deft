@@ -3,10 +3,10 @@ import 'dart:convert';
 import 'package:googleapis/logging/v2.dart';
 import 'package:googleapis_auth/auth_io.dart';
 
-import '../api.g.dart' show LogSeverity; // FIXME
-import '../cloud_run_revision.dart';
-import '../cloud_trace_context.dart';
+import 'gcp/gcp_cloud_run_revision.dart';
+import 'gcp/gcp_cloud_trace_context.dart';
 import 'log_adapter_base.dart';
+import 'log_severity.dart';
 import 'posix_log_adapter.dart';
 
 /// Writes structured logs (JSON) to GCP Cloud Logging.
@@ -28,7 +28,7 @@ class GcpLogServiceAdapter extends LogAdapterBase {
       this.instanceId, AuthClient client)
       : _api = LoggingApi(client),
         super(projectId, 'projects/$projectId/logs/$logName') {
-    _resource = CloudRunRevision(projectId, region).toMonitoredResource();
+    _resource = GcpCloudRunRevision(projectId, region).toMonitoredResource();
   }
 
   @override
@@ -104,7 +104,7 @@ class GcpLogServiceAdapter extends LogAdapterBase {
 
   void _tryAddTrace(String? requestId, LogEntry entry) {
     if (requestId == null) return;
-    var t = CloudTraceContext(requestId);
+    var t = GcpCloudTraceContext(requestId);
     entry
       ..trace = t.asLogEntry(projectId)
       ..traceSampled = t.sampled;

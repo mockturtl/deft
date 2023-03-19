@@ -3,16 +3,14 @@ import 'dart:io';
 import 'package:googleapis/logging/v2.dart' as googleapis
     show MonitoredResource;
 
-import 'api.g.dart' as g show MonitoredResource;
-
-class CloudRunRevision {
+class GcpCloudRunRevision {
   static const _type = 'cloud_run_revision';
   static const _unknown = 'unknown';
 
   final String projectId;
   final String gcpRegion;
 
-  const CloudRunRevision(this.projectId, this.gcpRegion);
+  const GcpCloudRunRevision(this.projectId, this.gcpRegion);
 
   String get _configurationName =>
       Platform.environment['K_CONFIGURATION'] ?? _unknown;
@@ -27,16 +25,6 @@ class CloudRunRevision {
   /// See <https://cloud.google.com/run/docs/container-contract#services-env-vars>
   googleapis.MonitoredResource toMonitoredResource() =>
       googleapis.MonitoredResource(type: _type, labels: {
-        'configuration_name': _configurationName,
-        'location': _location,
-        'project_id': projectId,
-        'revision_name': _revisionName,
-        'service_name': _serviceName,
-      });
-
-  @Deprecated('Prefer [toMonitoredResource].')
-  g.MonitoredResource toOldMonitoredResource() =>
-      g.MonitoredResource(type: _type, labels: {
         'configuration_name': _configurationName,
         'location': _location,
         'project_id': projectId,

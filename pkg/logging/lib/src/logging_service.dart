@@ -1,7 +1,9 @@
 import 'dart:async';
 
+import 'package:googleapis/logging/v2.dart' show LogEntry;
+
 import 'adapters/log_adapter_base.dart';
-import 'api.g.dart';
+import 'adapters/log_severity.dart';
 
 class LoggingService {
   final Iterable<LogAdapterBase> _adapters;

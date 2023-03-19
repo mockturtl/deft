@@ -1,8 +1,6 @@
 import 'dart:math';
 
 import 'package:deft_logging/deft_logging.dart';
-import 'package:deft_logging/src/api.g.dart';
-
 import 'package:test/test.dart';
 
 void main() {
@@ -84,37 +82,6 @@ void main() {
             expect(it['error'], 'oof');
           });
         });
-      });
-    });
-
-    group('buildLabels', () {
-      test('is null with null context and empty tag', () {
-        expect(subj.buildLabels(null, ''), isNull);
-      });
-
-      test('has 1 entry with null context', () {
-        var it = subj.buildLabels(null, 'some-tag');
-        expect(it?.length, 1);
-        expect(it?.keys.single, 'tag');
-        expect(it?.values.single, 'some-tag');
-      });
-
-      test('has 1 entry with empty tag', () {
-        var it = subj.buildLabels('some-context', '');
-        expect(it?.length, 1);
-        expect(it?.keys.single, 'context');
-        expect(it?.values.single, 'some-context');
-      });
-
-      test('has 2 entries', () {
-        var it = subj.buildLabels('some-context', 'some-tag');
-        expect(it?.length, 2);
-        var e1 = it?.entries.first;
-        expect(e1?.key, 'context');
-        expect(e1?.value, 'some-context');
-        var e2 = it?.entries.last;
-        expect(e2?.key, 'tag');
-        expect(e2?.value, 'some-tag');
       });
     });
   });

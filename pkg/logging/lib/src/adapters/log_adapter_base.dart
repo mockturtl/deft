@@ -4,7 +4,7 @@ import 'package:googleapis/logging/v2.dart';
 import 'package:grpc/service_api.dart' show ServiceCall;
 import 'package:meta/meta.dart';
 
-import '../api.g.dart' show LogSeverity;
+import 'log_severity.dart';
 
 abstract class LogAdapterBase {
   final String projectId;
@@ -27,19 +27,6 @@ abstract class LogAdapterBase {
           error: error,
           requestId: requestId,
           severity: LogSeverity.ALERT);
-
-  /// Assemble [context], [tag] for [LogEntry.labels].
-  @visibleForTesting
-  @protected
-  Map<String, String>? buildLabels(String? context, String tag) {
-    if (context == null || context.isEmpty) {
-      return (tag.isEmpty) ? null : {'tag': tag};
-    }
-
-    return (tag.isEmpty)
-        ? {'context': context}
-        : {'context': context, 'tag': tag};
-  }
 
   /// Assemble [message], [data], [error] for [LogEntry.jsonPayload].
   /// **Note:** [data] keys `message` and `error` are **reserved**.

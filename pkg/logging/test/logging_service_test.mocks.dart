@@ -6,7 +6,7 @@
 import 'dart:async' as _i3;
 
 import 'package:deft_logging/src/adapters/log_adapter_base.dart' as _i2;
-import 'package:deft_logging/src/api.g.dart' as _i4;
+import 'package:deft_logging/src/adapters/log_severity.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -64,18 +64,6 @@ class MockLogAdapterBase extends _i1.Mock implements _i2.LogAdapterBase {
         returnValue: _i3.Future<void>.value(),
         returnValueForMissingStub: _i3.Future<void>.value(),
       ) as _i3.Future<void>);
-  @override
-  Map<String, String>? buildLabels(
-    String? context,
-    String? tag,
-  ) =>
-      (super.noSuchMethod(Invocation.method(
-        #buildLabels,
-        [
-          context,
-          tag,
-        ],
-      )) as Map<String, String>?);
   @override
   Map<String, dynamic> buildPayload(
     String? message,

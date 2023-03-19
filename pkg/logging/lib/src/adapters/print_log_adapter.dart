@@ -1,5 +1,5 @@
-import '../api.g.dart';
 import 'log_adapter_base.dart';
+import 'log_severity.dart';
 
 /// Writes plaintext logs using [print].
 class PrintLogAdapter extends LogAdapterBase {
