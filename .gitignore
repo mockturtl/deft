@@ -2,8 +2,12 @@
 .secret/
 *.env
 
+# melos
+pubspec_overrides.yaml
+
 # Files and directories created by pub.
-pubspec.lock
+!pubspec.lock
+pkg/**/pubspec.lock
 .dart_tool/
 .packages
 doc/

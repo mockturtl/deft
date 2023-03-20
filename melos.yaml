@@ -1,0 +1,14 @@
+name: deft
+
+packages:
+  - pkg/*
+
+scripts:
+  analyze:
+    exec: dart analyze .
+  format:
+    exec: dart format .
+  test:
+    exec: dart test .
+  get:
+    exec: dart pub get
