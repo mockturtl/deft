@@ -1,5 +1,5 @@
-import '../log_adapter_base.dart';
 import '../../x_service_call.dart';
+import '../log_adapter_base.dart';
 
 /// Cloud Run automatically logs incoming requests.
 /// They appear in Logs Explorer with a `logName` of

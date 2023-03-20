@@ -29,12 +29,15 @@ abstract class LogAdapterBase {
           severity: LogSeverity.ALERT);
 
   /// Assemble [message], [data], [error] for [LogEntry.jsonPayload].
-  /// **Note:** [data] keys `message` and `error` are **reserved**.
   @visibleForTesting
   @protected
   Map<String, dynamic> buildPayload(
           String message, Map<String, dynamic> data, Object? error) =>
-      {'message': message, 'data': data, if (error != null) 'error': '$error'};
+      {
+        'message': message,
+        if (data.isNotEmpty) 'data': data,
+        if (error != null) 'error': '$error',
+      };
 
   /// FIXME: stack trace
   /// Write a structured [LogEntry] with [LogSeverity.CRITICAL].
@@ -177,8 +180,6 @@ abstract class LogAdapterBase {
   /// prefer static text in [message], and variable values in [data].
   ///
   /// Note [data] values **MUST** be compatible with [jsonEncode].
-  ///
-  /// The keys `"message"` and `"error"` are **reserved** by [buildPayload].
   ///
   /// Consider providing a Dart library or file name as [tag], and a class method as [context].
   /// These will populate [LogEntrySourceLocation.file], [LogEntrySourceLocation.function] respectively.

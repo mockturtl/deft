@@ -38,49 +38,27 @@ void main() {
           data = Map.fromIterable(tmp, key: (j) => '$j');
         });
 
-        test('only adds entries for message and error', () {
+        test('always contains message', () {
+          var it = subj.buildPayload('', {}, null);
+          expect(it.length, 1);
+          expect(it.containsKey('message'), true);
+        });
+
+        test('omits data when empty', () {
           var it = subj.buildPayload('hello', {}, 'oof');
           expect(it.length, 2);
         });
 
-        test('error is omitted when null', () {
+        test('omits error when null', () {
           var it = subj.buildPayload('hello', {}, null);
           expect(it.length, 1);
         });
 
-        test('message is omitted when empty', () {
-          var it = subj.buildPayload('', {}, 'oof');
-          expect(it.length, 1);
-        });
-
-        test('returns empty map with no message, error, or data', () {
-          var it = subj.buildPayload('', {}, null);
-          expect(it.isEmpty, true);
-        });
-
-        test('preserves existing entries', () {
+        test('preserves data', () {
           var it = subj.buildPayload('hello', data, 'oof');
-          expect(it.length, data.length + 2);
-          for (var k in data.keys) {
-            expect(it.keys.contains(k), true);
-          }
-          for (var v in data.values) {
-            expect(it.values.contains(v), true);
-          }
-        });
-
-        group('reserved keys', () {
-          test('overwrite an existing entry for "message"', () {
-            var it = subj.buildPayload(
-                'hello', data..addAll({'message': 'gone'}), 'oof');
-            expect(it['message'], 'hello');
-          });
-
-          test('overwrite an existing entry for "error"', () {
-            var it = subj.buildPayload(
-                'hello', data..addAll({'error': 'gone'}), 'oof');
-            expect(it['error'], 'oof');
-          });
+          expect(it.length, 3);
+          expect(it.containsKey('data'), true);
+          expect(it['data'], data);
         });
       });
     });

@@ -1,7 +1,8 @@
 import 'dart:convert';
 
 import 'package:googleapis/logging/v2.dart';
-import 'package:googleapis_auth/auth_io.dart';
+import 'package:googleapis_auth/auth_io.dart'
+    show AuthClient, clientViaServiceAccount;
 
 import 'gcp/gcp_cloud_run_revision.dart';
 import 'gcp/gcp_cloud_trace_context.dart';
@@ -24,6 +25,10 @@ class GcpLogServiceAdapter extends LogAdapterBase {
 
   late final MonitoredResource _resource;
 
+  /// [region] `'projects/PROJECT-NUMBER/regions/REGION'`.
+  /// See <https://cloud.google.com/run/docs/container-contract#metadata-server>.
+  ///
+  /// Pass a [clientViaServiceAccount] or similar as [client].
   GcpLogServiceAdapter(String projectId, String logName, String region,
       this.instanceId, AuthClient client)
       : _api = LoggingApi(client),

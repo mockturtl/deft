@@ -1,7 +1,6 @@
 import 'dart:io';
 
-import 'package:googleapis/logging/v2.dart' as googleapis
-    show MonitoredResource;
+import 'package:googleapis/logging/v2.dart' show LogEntry, MonitoredResource;
 
 class GcpCloudRunRevision {
   static const _type = 'cloud_run_revision';
@@ -10,6 +9,17 @@ class GcpCloudRunRevision {
   final String projectId;
   final String gcpRegion;
 
+  /// Populates the `resource` field of a [LogEntry].
+  ///
+  /// Your Cloud Run instance can obtain these values at runtime from the
+  /// metadata server.
+  ///
+  /// See
+  /// - <https://cloud.google.com/run/docs/container-contract#services-env-vars>
+  /// - <https://cloud.google.com/run/docs/container-contract#metadata-server>
+  ///
+  /// Note a value for [gcpRegion] like `'projects/$PROJECT_ID/regions/$REGION'`
+  /// is parsed to `'$REGION'`.
   const GcpCloudRunRevision(this.projectId, this.gcpRegion);
 
   String get _configurationName =>
@@ -21,10 +31,9 @@ class GcpCloudRunRevision {
 
   String get _serviceName => Platform.environment['K_SERVICE'] ?? _unknown;
 
-  /// Builds a [googleapis.MonitoredResource] using Cloud Run environment variables.
-  /// See <https://cloud.google.com/run/docs/container-contract#services-env-vars>
-  googleapis.MonitoredResource toMonitoredResource() =>
-      googleapis.MonitoredResource(type: _type, labels: {
+  /// Builds a [MonitoredResource] using Cloud Run environment variables.
+  MonitoredResource toMonitoredResource() =>
+      MonitoredResource(type: _type, labels: {
         'configuration_name': _configurationName,
         'location': _location,
         'project_id': projectId,
