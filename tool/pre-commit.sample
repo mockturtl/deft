@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -euxo pipefail
+
+tool/analyze.sh
+tool/format.sh
+tool/test.sh
