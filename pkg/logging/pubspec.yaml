@@ -4,16 +4,16 @@ version: 0.1.0
 repository: https://github.com/mockturtl/deft/tree/master/pkg/logging
 
 environment:
-  sdk: '>=2.19.0 <4.0.0'
+  sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
-  googleapis: ^10.1.0
+  googleapis: ^11.1.0
   googleapis_auth: ^1.4.0
   grpc: ^3.1.0
-  meta: ^1.9.0
+  meta: ^1.9.1
 
 dev_dependencies:
-  build_runner: ^2.3.3
-  mockito: ^5.3.2
+  build_runner: ^2.4.4
+  mockito: ^5.4.0
   test: ^1.23.1
-  tidy: ^2.19.0
+  tidy: ^3.0.0
