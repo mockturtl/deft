@@ -1,6 +1,6 @@
 # deft_logging
 
-## HEAD
+## 0.3.0
 
 - [dep] bump [`grpc`](https://pub.dev/packages/grpc/changelog#322)
 
