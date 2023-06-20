@@ -1,6 +1,6 @@
 name: deft_client_common
 description: Shared utilities and middleware for gRPC clients.
-version: 0.2.0
+version: 0.3.0
 repository: https://github.com/mockturtl/deft/tree/master/pkg/client_common
 
 environment:
