@@ -12,3 +12,7 @@ scripts:
     exec: dart test .
   get:
     exec: dart pub get
+  outdated:
+    exec: dart pub outdated
+  upgrade:
+    exec: dart pub upgrade
