@@ -1,6 +1,6 @@
 # deft_client_common
 
-## HEAD
+## 0.4.0
 
 - BREAKING: remove `ConsoleLogMiddleware`, `RttMiddleware`
 - [dep] remove `grpc` override
