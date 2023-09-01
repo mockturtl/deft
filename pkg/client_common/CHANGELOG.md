@@ -1,5 +1,10 @@
 # deft_client_common
 
+## HEAD
+
+- add `ConsoleLogMiddleware`, `RttMiddleware`
+- [dep] override `grpc` (adds `ClientInterceptor.interceptUnaryResponse`)
+
 ## 0.4.0
 
 - BREAKING: remove `ConsoleLogMiddleware`, `RttMiddleware`
