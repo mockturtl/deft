@@ -1,6 +1,6 @@
 name: deft_logging
 description: Logging adapters for the Deft framework.
-version: 0.3.0
+version: 0.3.0+1
 repository: https://github.com/mockturtl/deft/tree/master/pkg/logging
 
 environment:
