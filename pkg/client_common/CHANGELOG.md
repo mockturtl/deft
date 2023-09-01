@@ -1,5 +1,10 @@
 # deft_client_common
 
+## HEAD
+
+- BREAKING: remove `ConsoleLogMiddleware`, `RttMiddleware`
+- [dep] remove `grpc` override
+
 ## 0.3.0
 
 - [dep] bump [`grpc`](https://pub.dev/packages/grpc/changelog#322)
