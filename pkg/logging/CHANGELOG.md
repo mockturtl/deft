@@ -1,6 +1,6 @@
 # deft_logging
 
-## HEAD
+## 0.4.0
 
 - [dep] bump [googleapis](https://pub.dev/packages/googleapis/changelog#1200)
 
