@@ -7,7 +7,7 @@ environment:
   sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
-  googleapis: ^11.2.0
+  googleapis: ^12.0.0
   googleapis_auth: ^1.4.1
   grpc: ^3.2.2
   meta: ^1.9.1
